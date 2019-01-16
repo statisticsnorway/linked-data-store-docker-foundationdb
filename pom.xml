@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>no.ssb.lds</groupId>
+    <artifactId>linked-data-store-foundationdb</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>LinkedDataStore FoundationDB Server</name>
+    <description>LinkedDataStore FoundationDB Server</description>
+    <url>https://github.com/statisticsnorway/linked-data-store-docker-foundationdb</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <properties>
+        <java.version>11</java.version>
+        <module.build.sourceEncoding>UTF-8</module.build.sourceEncoding>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+
+        <slf4j.version>1.8.0-beta2</slf4j.version>
+        <logback.version>1.3.0-alpha4</logback.version>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Kim Christian Gaarder</name>
+            <email>kim.christian.gaarder@gmail.com</email>
+            <url>https://www.linkedin.com/in/kimchristiangaarder/</url>
+            <organization>Capra Consulting AS</organization>
+            <organizationUrl>https://www.capraconsulting.no/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Ove Ranheim</name>
+            <email>ove.ranheim@gmail.com</email>
+            <url>https://www.linkedin.com/in/oranheim/</url>
+            <organization>Capra Consulting AS</organization>
+            <organizationUrl>https://www.capraconsulting.no/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Idar Meling</name>
+            <email>idar.meling@gmail.com</email>
+            <url>https://www.linkedin.com/in/imeling/</url>
+            <organization>Acando AS</organization>
+            <organizationUrl>https://www.acando.no/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/statisticsnorway/linked-data-store-docker-foundationdb.git</connection>
+        <developerConnection>scm:git:git@github.com:statisticsnorway/linked-data-store-docker-foundationdb.git</developerConnection>
+        <url>https://github.com/statisticsnorway/linked-data-store-docker-foundationdb/tree/master</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>no.ssb.config</groupId>
+            <artifactId>dynamic-configuration</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>no.ssb.lds</groupId>
+            <artifactId>linked-data-store-core</artifactId>
+            <version>0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>no.ssb.lds</groupId>
+            <artifactId>linked-data-store-persistence-provider-foundationdb</artifactId>
+            <version>0.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.mail</groupId>
+                    <artifactId>javax.mail</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <release>${java.version}</release>
+                    <encoding>${module.build.sourceEncoding}</encoding>
+                    <meminitial>64m</meminitial>
+                    <maxmem>512m</maxmem>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
