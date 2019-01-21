@@ -16,7 +16,7 @@ WORKDIR /
 # Build LDS Server
 #
 RUN ["jlink", "--strip-debug", "--no-header-files", "--no-man-pages", "--compress=2", "--module-path", "/opt/jdk/jmods", "--output", "/linked",\
- "--add-modules", "jdk.unsupported,java.base,java.management,java.net.http,java.xml,java.naming"]
+ "--add-modules", "jdk.unsupported,java.base,java.management,java.net.http,java.xml,java.naming,java.desktop"]
 COPY pom.xml /lds/server/
 WORKDIR /lds
 RUN cat server/pom.xml | /clone_snapshots.sh && for i in $(ls -d */ | cut -f1 -d'/'); do cd $i; mvn -B install; cd ..; done
