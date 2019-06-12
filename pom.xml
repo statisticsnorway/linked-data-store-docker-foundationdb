@@ -67,8 +67,13 @@
         </dependency>
         <dependency>
             <groupId>no.ssb.lds</groupId>
+            <artifactId>linked-data-store-persistence-provider-api</artifactId>
+            <version>0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>no.ssb.lds</groupId>
             <artifactId>linked-data-store-core</artifactId>
-            <version>0.14-SNAPSHOT</version>
+            <version>0.14</version>
         </dependency>
         <dependency>
             <groupId>no.ssb.lds</groupId>
