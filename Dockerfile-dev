@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y maven curl tar gzip bash perl git
 # Build LDS Server
 #
 RUN ["jlink", "--strip-debug", "--no-header-files", "--no-man-pages", "--compress=2", "--module-path", "/opt/jdk/jmods", "--output", "/linked",\
- "--add-modules", "jdk.unsupported,java.base,java.management,java.net.http,java.xml,java.naming,java.desktop"]
+ "--add-modules", "jdk.unsupported,java.base,java.management,java.net.http,java.xml,java.naming,java.desktop,java.sql"]
 
 #
 # Build LDS image
